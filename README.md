@@ -1,2 +1,2 @@
 # CurriculumsSystem
-Automated information system "Curriculum"
+Automated information system "Curriculums"
