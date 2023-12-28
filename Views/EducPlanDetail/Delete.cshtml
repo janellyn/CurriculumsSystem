@@ -1,0 +1,71 @@
+﻿@model TaskAuthenticationAuthorization.Models.Course_Curriculum
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Видалити</h1>
+
+<div>
+    <h4>Навчальний курс</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            Номер
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Course.ID)
+        </dd>
+        <dt class="col-sm-3">
+            Курс
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Course.Name)
+        </dd>
+        <dt class="col-sm-3">
+            Кафедра
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Course.Department_Name)
+        </dd>
+        <dt class="col-sm-3">
+            Дисципліни
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Course.Disciplines)
+        </dd>
+        <dt class="col-sm-3">
+            Лекції
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Course.Lectures)
+        </dd>
+        <dt class="col-sm-3">
+            Практичні
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Course.Practical)
+        </dd>
+        <dt class="col-sm-3">
+            Лабораторні
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Course.Laboratory)
+        </dd>
+        <dt class="col-sm-3">
+            Самостійна робота
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Course.Self_Study)
+        </dd>
+    </dl>
+    
+    <h5>Ви впевнені у видаленні?</h5>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CourseID" />
+        <input type="hidden" asp-for="CurriculumID" />
+        <input type="submit" value="Видалити" class="btn btn-danger" /> |
+        <a asp-action="Index">Повернутися до списку</a>
+    </form>
+</div>

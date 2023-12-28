@@ -1,0 +1,115 @@
+﻿@model IEnumerable<TaskAuthenticationAuthorization.Models.Course_Curriculum>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Навчальний план</h1>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Шукати за номером: <input type="text" name="SearchInt" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Пошук" class="btn btn-default" />
+        </p>
+        <p>
+            Шукати за назвою: <input type="text" name="SearchString" value="@ViewData["CurrentFilter2"]" />
+            <input type="submit" value="Пошук" class="btn btn-default" />
+        </p>
+    </div>
+</form>
+
+@if (string.IsNullOrEmpty((string)ViewData["CurrentFilter"]) && string.IsNullOrEmpty((string)ViewData["CurrentFilter2"]))
+{
+    <p>
+        Введіть номер або назву курсу для пошуку.
+    </p>
+}
+else
+{
+    var curriculumName = "";
+    <p>
+        @if (ViewContext.HttpContext.User.IsInRole(ApplicationRoles.AdminRole))
+        {
+            <h6>
+                <span style="float:right; margin-right: 30px;">
+                    <a asp-action="Create">Додати курс</a>
+                </span>
+            </h6>
+        }
+    </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Курс
+            </th>
+            <th>
+                Кафедра
+            </th>
+            <th>
+                Дисципліни
+            </th>
+            <th>
+                Лекції
+            </th>
+            <th>
+                Практичні
+            </th>
+            <th>
+                Лабораторні
+            </th>
+            <th>
+                Самостійна робота
+            </th>
+                <th>Дія</th>
+        </tr>
+    </thead>
+    <tbody>
+            
+@foreach (var item in Model) {
+                if (curriculumName != item.Curriculum.Name)
+                {
+                    curriculumName = item.Curriculum.Name;
+                    <h5>@curriculumName</h5>
+                }
+                
+                <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.Department_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.Disciplines)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.Lectures)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.Practical)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.Laboratory)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Course.Self_Study)
+                </td>
+                    <td>
+                        @if (ViewContext.HttpContext.User.IsInRole(ApplicationRoles.AdminRole))
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.CourseID">Редагувати</a>
+                        }
+                        <a asp-action="Details" asp-route-id="@item.CourseID">Деталі</a>
+
+                        @if (ViewContext.HttpContext.User.IsInRole(ApplicationRoles.AdminRole))
+                        {
+                            <a asp-action="Delete" asp-route-courseid="@item.CourseID" asp-route-curid="@item.CurriculumID">Видалити</a>
+                        }
+                    </td>
+        </tr>
+}
+    </tbody>
+</table>
+}

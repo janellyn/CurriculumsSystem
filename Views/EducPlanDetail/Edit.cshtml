@@ -1,0 +1,64 @@
+﻿@model TaskAuthenticationAuthorization.Models.Course
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Редагувати</h1>
+
+<h4>Навчальний курс</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Назва курсу</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Department_Name" class="control-label">Назва кафедри</label>
+                <input asp-for="Department_Name" class="form-control" />
+                <span asp-validation-for="Department_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Disciplines" class="control-label">Дисципліни</label>
+                <input asp-for="Disciplines" class="form-control" />
+                <span asp-validation-for="Disciplines" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Lectures" class="control-label">Лекції</label>
+                <input asp-for="Lectures" class="form-control" />
+                <span asp-validation-for="Lectures" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Practical" class="control-label">Практичні</label>
+                <input asp-for="Practical" class="form-control" />
+                <span asp-validation-for="Practical" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Laboratory" class="control-label">Лабораторні</label>
+                <input asp-for="Laboratory" class="form-control" />
+                <span asp-validation-for="Laboratory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Self_Study" class="control-label">Самостійна робота</label>
+                <input asp-for="Self_Study" class="form-control" />
+                <span asp-validation-for="Self_Study" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Зберегти" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Повернутися до списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

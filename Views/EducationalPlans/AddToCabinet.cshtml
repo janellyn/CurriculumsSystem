@@ -1,0 +1,63 @@
+﻿@model TaskAuthenticationAuthorization.Models.Curriculum
+
+@{
+    ViewData["Title"] = "AddToCabinet";
+}
+
+<h1>Додати</h1>
+
+<div>
+    <h4>Навчальний план</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">
+            Номер
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.ID)
+        </dd>
+        <dt class="col-sm-3" width="500%">
+            Назва навчального плану
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-3">
+            Освітній ступінь
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Education_Level.Name)
+        </dd>
+        <dt class="col-sm-3">
+            Форма навчання
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Learning_Form.Name)
+        </dd>
+        <dt class="col-sm-3">
+            Факультет/Інститут
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Faculty_Institute.Name)
+        </dd>
+        <dt class="col-sm-3">
+            Спеціальність
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Speciality.Name)
+        </dd>
+        <dt class="col-sm-3">
+            Освітня програма
+        </dt>
+        <dd class="col-sm-9">
+            @Html.DisplayFor(model => model.Educational_Program.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <form asp-action="AddToCabinet">
+        <input type="hidden" asp-for="ID" />
+        <input type="submit" value="Додати" /> |
+        <a asp-action="Index">  Повернутися до списку</a>
+    </form>
+</div>

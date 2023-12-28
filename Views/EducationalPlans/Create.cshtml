@@ -1,0 +1,147 @@
+﻿@model TaskAuthenticationAuthorization.Models.Curriculum
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Cтворення</h1>
+
+<h4>Навчальний план</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ID" class="control-label">Номер</label>
+                <input asp-for="ID" class="form-control" />
+                <span asp-validation-for="ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label">Назва навчального плану</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Education_LevelId" class="control-label">Освітній ступінь</label>
+                <select asp-for="Education_LevelId" class="form-control">
+                    <option value="1">Бакалаврат</option>
+                    <option value="2">Магістратура</option>
+                </select>
+                <span asp-validation-for="Education_LevelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Learning_FormId" class="control-label">Форма навчання</label>
+                <select asp-for="Learning_FormId" class="form-control">
+                    <option value="1">Денна форма навчання</option>
+                    <option value="2">Заочна форма навчання</option>
+                </select>
+                <span asp-validation-for="Learning_FormId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Faculty_InstituteId" class="control-label">Факультет/Інститут</label>
+                <select asp-for="Faculty_InstituteId" asp-selected="2" class="form-control">
+                    <option value="1">Інженерно-хiмiчний факультет</option>
+                    <option value="2">Приладобудiвний факультет</option>
+                    <option value="3">Радiотехнiчний факультет</option>
+                    <option value="4">Факультет iнформатики та обчислювальної технiки</option>
+                    <option value="5">Фiзико-математичний факультет</option>
+                    <option value="6">Факультет електронiки</option>
+                    <option value="7">Факультет менеджменту та маркетингу</option>
+                    <option value="8">Видавничо-полiграфiчний інститут</option>
+                    <option value="9">Інститут аерокосмічних технологій</option>
+                    <option value="10">Механiко-машинобудiвний iнститут</option>
+                    <option value="11">Фiзико-технiчний iнститут</option>
+                    <option value="12">Інститут прикладного системного аналiзу</option>
+                    <option value="13">Інститут матеріалознавства та зварювання</option>
+                    <option value="14">Інститут телекомунiкацiйних систем</option>
+                </select>
+                <span asp-validation-for="Faculty_InstituteId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpecialityId" class="control-label">Спеціальність</label>
+                <select asp-for="SpecialityId" class="form-control">
+                    <option value="1">ІХФ - Екологія 101</option>
+                    <option value="2">ІХФ - Прикладна механіка 131</option>
+                    <option value="3">ПБФ - Автоматизація та компютерно-інтегровані технології 151</option>
+                    <option value="4">ПБФ - Метрологія та інформаційно-вимірювальна техніка 152</option>
+                    <option value="5">РТФ - Телекомунікації та радіотехніка 172</option>
+                    <option value="6">ФІОТ - Інженерія програмного забезпечення 121</option>
+                    <option value="7">ФІОТ - Компютерна інженерія 123</option>
+                    <option value="8">ФІОТ - Інформаційні системи та технології 126</option>
+                    <option value="9">ФМФ - Математика 111</option>
+                    <option value="10">ФМФ - Фізика та астрономія 104</option>
+                    <option value="11">ФЕ - Електроніка 171</option>
+                    <option value="12">ФЕ - Мікро- та наносистемна техніка 153</option>
+                    <option value="13">ФММ - Економіка 051</option>
+                    <option value="14">ФММ - Менеджмент 073</option>
+                    <option value="15">ВПІ - Журналістика 061</option>
+                    <option value="16">ВПІ - Галузеве машинобудування 133</option>
+                    <option value="17">ІАТ - Авіоніка 173</option>
+                    <option value="18">ІАТ - Авіаційна та ракетно-космічна техніка 134</option>
+                    <option value="19">ММІ - Прикладна механіка 131</option>
+                    <option value="20">ФТІ - Прикладна математика 113</option>
+                    <option value="21">ФТІ - Кібербезпека 125</option>
+                    <option value="22">ІПСА - Системний аналіз 124</option>
+                    <option value="23">ІПСА - Компютерні науки 122</option>
+                    <option value="24">ІМЗ - Прикладна механіка 131</option>
+                    <option value="25">ІМЗ - Металургія 136</option>
+                    <option value="26">ІТС - Телекомунікації та радіотехніка 172</option>
+                </select>
+                <span asp-validation-for="SpecialityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Educational_ProgramId" class="control-label">Освітня програма</label>
+                <select asp-for="Educational_ProgramId" class="form-control">
+                    <option value="1">101 - Екологічна безпека</option>
+                    <option value="2">101 - Екологія</option>
+                    <option value="3">131 - Інжиніринг паковань</option>
+                    <option value="4">151 - Комп`ютерно-інтегровані системи</option>
+                    <option value="5">151 - Автоматизація та комп`ютерно-інтегровані технології</option>
+                    <option value="6">152 - Інформаційні вимірювальні технології</option>
+                    <option value="7">172 - Інформаційна та комунікаційна радіоінженерія</option>
+                    <option value="8">172 - Радіотехнічні комп`ютеризовані системи</option>
+                    <option value="9">121 - Інженерія програмного забезпечення</option>
+                    <option value="10">123 - Комп`ютерні системи та мережі</option>
+                    <option value="11">126 - Інтегровані інформаційні системи</option>
+                    <option value="12">111 - Математичні та комп`ютерні методи</option>
+                    <option value="13">111 - Страхова та фінансова математика</option>
+                    <option value="14">104 - Комп`ютерне моделювання фізичних процесів</option>
+                    <option value="15">171 - Електронні компоненти і системи</option>
+                    <option value="16">153 - Мікро- та наноелектроніка</option>
+                    <option value="17">051 - Економіка бізнес-підприємства</option>
+                    <option value="18">051 - Економічна кібернетика</option>
+                    <option value="19">073 - Менеджмент і бізнес-адміністрування</option>
+                    <option value="20">061 - Видавнича справа та редагування</option>
+                    <option value="21">133 - Комп`ютеризовані поліграфічні системи</option>
+                    <option value="22">173 - Системи керування літальними апаратами</option>
+                    <option value="23">134 - Інженерія авіаційних та ракетно-космічних систем</option>
+                    <option value="24">134 - Літаки і вертольоти</option>
+                    <option value="25">131 - Автоматизовані та роботизовані механічні системи</option>
+                    <option value="26">113 - Математичні методи криптографічного захисту інформації</option>
+                    <option value="27">113 - Прикладна математика</option>
+                    <option value="28">125 - Системи технічного захисту інформації</option>
+                    <option value="29">124 - Системний аналіз фінансового ринку</option>
+                    <option value="30">122 - Системи і методи штучного інтелекту</option>
+                    <option value="31">131 - Інжиніринг зварювання, лазерних та споріднених технологій</option>
+                    <option value="32">136 - Комп`ютеризовані процеси лиття</option>
+                    <option value="33">136 - Нанотехнології та комп`ютерний дизайн матеріалів</option>
+                    <option value="34">172 - Інженерія та програмування інфокомунікацій</option>
+                    <option value="35">172 - Системи та мережі електронних комунікацій</option>
+                </select>
+                <span asp-validation-for="Educational_ProgramId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Створити" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Повернутися до повного списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

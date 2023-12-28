@@ -1,0 +1,26 @@
+﻿@model List<TaskAuthenticationAuthorization.Models.Userr>
+
+    <h2>Список користувачів</h2>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ім'я</th>
+                <th>Логін</th>
+                <th>Роль</th>
+                <th>Дія</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Login</td>
+                    <td>@user.Role?.Name</td>
+                    <td><a asp-action="EditUser" asp-route-id="@user.ID">Редагувати</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+

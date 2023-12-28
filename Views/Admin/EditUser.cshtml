@@ -1,0 +1,32 @@
+﻿@model Userr
+
+<h2>Редагувати користувача</h2>
+
+<form asp-action="EditUser" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Ім'я</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Login" class="control-label">Логін</label>
+        <input asp-for="Login" class="form-control"/>
+        <span asp-validation-for="Login" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="RoleId">Роль</label>
+        <select asp-for="RoleId" class="form-control">
+            <option value="1">Admin</option>
+            <option value="2">User</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Зберегти" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Повернутися до повного списку</a>
+</div>

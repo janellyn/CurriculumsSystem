@@ -1,0 +1,42 @@
+﻿@model TaskAuthenticationAuthorization.Models.Course_Curriculum
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Додати</h2>
+
+<h4>Навчальний курс</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CurriculumID" class="control-label">Номер плану:</label>
+                <input type="readonly" asp-for="CurriculumID" class="form-control" />
+                <span asp-validation-for="CurriculumID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CourseID" class="control-label">Вибрати курс:</label>
+                <select asp-for="CourseID" class="form-control">
+                    @foreach (var course in ViewData["Course"] as IEnumerable<Course>)
+                    {
+                       <option value="@course.ID">@course.Name</option> 
+                    }
+                </select>
+                <span asp-validation-for="CourseID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Додати" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+    <a asp-action="Index">Повернутися до списку</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

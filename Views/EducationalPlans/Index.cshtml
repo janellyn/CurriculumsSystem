@@ -1,0 +1,95 @@
+﻿@model IEnumerable<TaskAuthenticationAuthorization.Models.Curriculum>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Навчальні плани</h1>
+
+<p>
+    @if (ViewContext.HttpContext.User.IsInRole(ApplicationRoles.AdminRole))
+    {
+        <a asp-action="Create">Створити новий план</a>
+    }
+</p>
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Шукати за назвою: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Пошук" class="btn btn-default" /> |
+            <a asp-action="Index">Повернутися до повного списку</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               <a asp-action="Index" asp-route-sortOrder="@ViewData["IDSortParam"]">Номер</a>
+            </th>
+            <th>
+               <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParam"]">Назва навчального плану</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["Education_LevelSortParam"]">Освітній ступінь</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["Learning_FormSortParam"]">Форма навчання</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["Faculty_InstituteSortParam"]">Факультет/Інститут</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SpecialitySortParam"]">Спеціальність</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["Educational_ProgramSortParam"]">Освітня програма</a>
+            </th>
+            <th>Дія</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Education_Level.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Learning_Form.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Faculty_Institute.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Speciality.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Educational_Program.Name)
+            </td>
+            <td>
+                    @if (ViewContext.HttpContext.User.IsInRole(ApplicationRoles.AdminRole))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.ID">Редагувати</a>
+                    }
+                        <a asp-action="Details" asp-route-id="@item.ID">Деталі</a>
+
+                    @if (ViewContext.HttpContext.User.IsInRole(ApplicationRoles.UserRole))
+                    {
+                        <a asp-action="AddToCabinet" asp-route-id="@item.ID">Додати план до кабінету</a>
+                    }
+                    
+                    @if (ViewContext.HttpContext.User.IsInRole(ApplicationRoles.AdminRole)) 
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.ID">Видалити</a>
+                    }
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

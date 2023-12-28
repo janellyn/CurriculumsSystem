@@ -1,0 +1,68 @@
+﻿@model IEnumerable<TaskAuthenticationAuthorization.Models.Cabinet_Curriculum>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Кабінет</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Номер
+            </th>
+            <th>
+                Назва навчального плану
+            </th>
+            <th>
+                Освітній ступінь
+            </th>
+            <th>
+                Форма навчання
+            </th>
+            <th>
+                Факультет/Інститут
+            </th>
+            <th>
+                Спеціальність
+            </th>
+            <th>
+                Освітня програма
+            </th>
+            <th>Дія</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Curriculum.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Curriculum.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Curriculum.Education_Level.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Curriculum.Learning_Form.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Curriculum.Faculty_Institute.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Curriculum.Speciality.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Curriculum.Educational_Program.Name)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.CurriculumID">Деталі</a>
+                    <a asp-action="Delete" asp-route-id="@item.CurriculumID">Видалити</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
