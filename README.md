@@ -47,7 +47,7 @@ git clone https://github.com/janellyn/CurriculumsSystem.git
 
 2. Open the project in Visual Studio or any other supported C# development environment.
 
-3. Create a database named **"curriculums-system"** in SQL Server and execute the script from the `database.sql` file to create the required tables and relationships.
+3. Create a database in SQL Server and execute the script from the `database.sql` file to create the required tables and relationships.
 
 4. Update the connection string in the appsettings.json file within your MVC project:
 
